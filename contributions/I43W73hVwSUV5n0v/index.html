@@ -1,42 +1,32 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Simulateur de Trou Noir</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <canvas id="ciel"></canvas>
+<canvas id="ciel"></canvas>
 
-    <div id="panneau">
-      <h1>Simulateur de Trou Noir</h1>
-      <div class="ctrl">
-        <label>Masse du trou noir <span id="valMasse">2000</span></label>
-        <input type="range" id="masse" min="500" max="8000" value="2000" />
-      </div>
-      <div class="ctrl">
-        <label>Vitesse du temps <span id="valTemps">×1.0</span></label>
-        <input type="range" id="temps" min="0.1" max="3" step="0.1" value="1" />
-      </div>
-      <div class="btns">
-        <button id="modeBtn">Mode fixe : OFF</button>
-      </div>
-      <div class="btns">
-        <button id="pauseBtn">Pause</button>
-        <button id="clearBtn">Effacer</button>
-      </div>
-      <div id="stats">
-        En orbite : <span id="valN">0</span><br />
-        Planètes fixes : <span id="valF">0</span><br />
-        Capturées par le trou noir : <span id="captures">0</span>
-      </div>
-      <div id="aide">
-        Toute planète finit absorbée : les orbites décroissent lentement
-        (traînée d'accrétion) jusqu'à la spirale finale.<br />
-        Mode lancer : clique-glisse. Mode fixe : un clic pose une planète
-        immobile qui attire les autres.
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+<div id="panneau">
+  <h1>Simulateur de Trou Noir</h1>
+  <div class="ctrl">
+    <label>Masse du trou noir <span id="valMasse">2000</span></label>
+    <input type="range" id="masse" min="500" max="8000" value="2000" />
+  </div>
+  <div class="ctrl">
+    <label>Vitesse du temps <span id="valTemps">×1.0</span></label>
+    <input type="range" id="temps" min="0.1" max="3" step="0.1" value="1" />
+  </div>
+  <div class="btns">
+    <button id="modeBtn">Mode fixe : OFF</button>
+  </div>
+  <div class="btns">
+    <button id="pauseBtn">Pause</button>
+    <button id="clearBtn">Effacer</button>
+  </div>
+  <div id="stats">
+    En orbite : <span id="valN">0</span><br />
+    Planètes fixes : <span id="valF">0</span><br />
+    Capturées par le trou noir : <span id="captures">0</span>
+  </div>
+  <div id="aide">
+    Toute planète finit absorbée : les orbites décroissent lentement (traînée
+    d'accrétion) jusqu'à la spirale finale.<br />
+    Mode lancer : clique-glisse. Mode fixe : un clic pose une planète immobile
+    qui attire les autres.
+  </div>
+</div>
+<script src="script.js"></script>
