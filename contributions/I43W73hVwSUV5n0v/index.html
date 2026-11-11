@@ -2,148 +2,41 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contribution — Widget météo</title>
-    <style>
-      .mtw *, .mtw *::before, .mtw *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      .mtw {
-        all: initial;
-        display: block;
-        font-family: "Segoe UI", system-ui, sans-serif;
-        height: 420px;
-        overflow-y: auto;
-        padding: 24px;
-        color: #e8ecf4;
-        background:
-          radial-gradient(600px 300px at 20% -10%, rgba(125, 211, 252, 0.25), transparent 60%),
-          radial-gradient(500px 300px at 80% 10%, rgba(167, 139, 250, 0.2), transparent 55%),
-          linear-gradient(180deg, #0b1020, #101a33);
-      }
-
-      .mtw h2 {
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: #7dd3fc;
-        margin-bottom: 16px;
-      }
-
-      .mtw .widget {
-        max-width: 360px;
-        margin: 0 auto;
-        padding: 22px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      .mtw .city {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-
-      .mtw .city strong {
-        font-size: 1.1rem;
-      }
-
-      .mtw .badge {
-        font-size: 0.7rem;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(125, 211, 252, 0.15);
-        border: 1px solid rgba(125, 211, 252, 0.35);
-        color: #7dd3fc;
-      }
-
-      .mtw .temp {
-        font-size: 3rem;
-        font-weight: 700;
-        background: linear-gradient(90deg, #7dd3fc, #a78bfa);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .mtw .desc {
-        color: #9aa4b8;
-        font-size: 0.9rem;
-        margin-bottom: 16px;
-      }
-
-      .mtw .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      .mtw .stat {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 10px;
-        font-size: 0.82rem;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .mtw .stat span:first-child {
-        color: #9aa4b8;
-      }
-
-      .mtw .stat span:last-child {
-        font-weight: 600;
-      }
-
-      .mtw .sun {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 16px;
-        font-size: 0.8rem;
-        color: #9aa4b8;
-      }
-
-      .mtw .sun span::before {
-        content: "☀ ";
-      }
-
-      .mtw footer {
-        text-align: center;
-        margin-top: 18px;
-        font-size: 0.72rem;
-        color: #9aa4b8;
-      }
-    </style>
+    <title>Simulateur de Trou Noir</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mtw">
-      <h2>Météo du jour</h2>
-      <div class="widget">
-        <div class="city">
-          <strong>Cayenne, Guyane</strong>
-          <span class="badge">Live</span>
-        </div>
-        <p class="temp">28.4°C</p>
-        <p class="desc">Ciel dégagé — ressenti 31°C</p>
-        <div class="stats">
-          <div class="stat"><span>Humidité</span><span>78%</span></div>
-          <div class="stat"><span>Vent</span><span>3.6 m/s</span></div>
-          <div class="stat"><span>Pression</span><span>1012 hPa</span></div>
-          <div class="stat"><span>Visibilité</span><span>10 km</span></div>
-        </div>
-        <div class="sun">
-          <span>Lever 06:12</span>
-          <span>Coucher 18:24</span>
-        </div>
+    <canvas id="ciel"></canvas>
+
+    <div id="panneau">
+      <h1>Simulateur de Trou Noir</h1>
+      <div class="ctrl">
+        <label>Masse du trou noir <span id="valMasse">2000</span></label>
+        <input type="range" id="masse" min="500" max="8000" value="2000" />
+      </div>
+      <div class="ctrl">
+        <label>Vitesse du temps <span id="valTemps">×1.0</span></label>
+        <input type="range" id="temps" min="0.1" max="3" step="0.1" value="1" />
+      </div>
+      <div class="btns">
+        <button id="modeBtn">Mode fixe : OFF</button>
+      </div>
+      <div class="btns">
+        <button id="pauseBtn">Pause</button>
+        <button id="clearBtn">Effacer</button>
+      </div>
+      <div id="stats">
+        En orbite : <span id="valN">0</span><br />
+        Planètes fixes : <span id="valF">0</span><br />
+        Capturées par le trou noir : <span id="captures">0</span>
+      </div>
+      <div id="aide">
+        Toute planète finit absorbée : les orbites décroissent lentement
+        (traînée d'accrétion) jusqu'à la spirale finale.<br />
+        Mode lancer : clique-glisse. Mode fixe : un clic pose une planète
+        immobile qui attire les autres.
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

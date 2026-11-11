@@ -1,0 +1,80 @@
+/* ===== MISE EN PAGE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background: #02040c;
+  font-family: "Segoe UI", sans-serif;
+}
+canvas {
+  display: block;
+}
+
+/* Panneau de contrôle */
+#panneau {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 270px;
+  background: rgba(10, 14, 30, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(120, 100, 255, 0.35);
+  border-radius: 12px;
+  padding: 16px;
+  color: #cfd6ff;
+  font-size: 13px;
+}
+#panneau h1 {
+  font-size: 15px;
+  color: #a78bff;
+  margin-bottom: 10px;
+}
+.ctrl {
+  margin: 12px 0;
+}
+.ctrl label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  opacity: 0.85;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: #6d4aff;
+}
+.btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+button {
+  flex: 1;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 100, 255, 0.5);
+  background: rgba(109, 74, 255, 0.15);
+  color: #cfd6ff;
+}
+button:hover {
+  background: rgba(109, 74, 255, 0.4);
+}
+button.actif {
+  background: rgba(109, 74, 255, 0.55);
+  border-color: rgba(190, 170, 255, 0.9);
+}
+#stats {
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+#aide {
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: 0.55;
+  line-height: 1.5;
+}
